@@ -1,0 +1,588 @@
+html {
+	overflow-y: scroll;
+}
+
+body {
+	font-size: 10px;
+	margin: 0px;
+}
+
+a img {
+	border: none;
+}
+
+h1 {
+	font-size: 1.6em;
+	margin-top: 0;
+}
+
+input[type=submit],input[type=button] {
+	font-size: 11px;
+	margin: 5px 5px 5px 0;
+	cursor: pointer;
+}
+
+input[type=text],input[type=password],textarea {
+	font-size: 11px;
+	padding-left: 1px;
+}
+
+select {
+	font-size: 11px;
+}
+
+.tableControl,.actionButtons {
+	width: 100%;
+}
+
+.tableControl a {
+	padding-left: 10px;
+}
+
+.tableControl {
+	text-align: right;
+}
+
+.footer {
+	text-align: center;
+	font-size: 11px;
+	margin-bottom: 10px;
+}
+
+.rich-table {
+	width: 100%;
+}
+
+.body {
+	padding: 0px;
+}
+
+.message {
+	padding: 5px;
+	list-style: none;
+	border: 1;
+	background: none;
+	padding: 0;
+	margin: 5px 0 8px 0;
+	font-size: 12px;
+}
+
+.message li {
+	background: no-repeat left center;
+	padding-top: 1px;
+	padding-left: 20px;
+	margin-left: 3px;
+}
+
+.message li.infomsg {
+	background-image: url(../img/msginfo.png);
+}
+
+.message li.errormsg {
+	background-image: url(../img/msgerror.png);
+}
+
+.message li.warnmsg {
+	background-image: url(../img/msgwarn.png);
+}
+
+.name {
+	vertical-align: top;
+	font-weight: bold;
+	width: 145px;
+	float: left;
+	padding: 5px;
+	margin-top: 3px;
+	clear: left;
+}
+
+.value {
+	float: left;
+	padding: 5px;
+}
+
+.value input[type=text] {
+	width: 300px;
+}
+
+.error {
+	float: left;
+	padding: 5px;
+}
+
+.errors {
+	color: #FF0000;
+	vertical-align: middle;
+}
+
+img.errors {
+	padding-right: 5px;
+}
+
+.errors input,.errors textarea,.errors select {
+	border: 1px solid red !important;
+}
+
+.required {
+	color: #FF0000;
+	padding-left: 2px;
+}
+
+.rich-stglpanel-body {
+	overflow: auto;
+}
+
+/* the specificity here is necessary to override the defaults */
+/*
+.rich-panel .rich-panel-header,
+.rich-stglpanel .rich-stglpanel-header {
+	padding: 2px 3px;
+}*/
+.rich-panel input[type=submit],.rich-panel input[type=button],.rich-tabpanel input[type=submit],.rich-tabpanel input[type=button]
+	{
+	margin-bottom: 0;
+}
+
+.tableControl input[type=submit],.tableControl input[type=button],.tableControl select
+	{
+	margin: 5px 0 5px 5px;
+}
+
+/* I don't know why this is necessary, but the select is off by a pixel on the top and is padding too much on the left */
+.tableControl select {
+	margin-left: 2px;
+	position: relative;
+	top: 1px;
+}
+
+.actionButtons {
+	padding-left: 1px;
+}
+
+.actionButtons select {
+	margin: 5px 5px 5px 0;
+	vertical-align: bottom;
+}
+
+.rich-toolbar-item a {
+	text-decoration: none;
+}
+
+.rich-toolbar-item a:hover,.rich-ddmenu-label-select {
+	text-decoration: underline;
+}
+
+.rich-toolbar-item .rich-menu-item a:hover {
+	text-decoration: none;
+}
+
+.rich-datalist {
+	list-style: square;
+	margin: 6px 0 1px 0;
+	padding-left: 18px;
+}
+
+.rich-list-item {
+	padding-bottom: 4px;
+}
+
+div.info {
+	font-size: 1.2em;
+}
+
+ul.bullets {
+	list-style: square;
+}
+
+ul.bullets li {
+	padding-bottom: 2px;
+}
+
+td.action {
+	text-align: center;
+	width: 8em;
+	white-space: nowrap;
+}
+
+td.action a {
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+table.radio {
+	border: 0;
+}
+
+table.radio td {
+	padding: 0 2px;
+}
+
+table.radio input[type=radio] {
+	vertical-align: bottom;
+}
+
+#container {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px auto 0px;
+	PADDING-LEFT: 0px;
+	WIDTH: 1100px;
+	PADDING-RIGHT: 0px;
+	FONT-SIZE: 15px;
+	PADDING-TOP: 0px;
+	PADDING-RIGHT: 0px;
+	background-color: transparent;
+	background-image: url(../img/background_dark_blue_whitegradient_.png);
+	background-color: transparent;
+	background-repeat: no-repeat;
+}
+
+.colAlignTop {
+	vertical-align: top;
+	padding: 0px 0px 0px 0px;
+}
+
+.colAlignTopWidth1 {
+	vertical-align: top;
+	width: 150px;
+}
+
+.colAlignTopWidth2 {
+	vertical-align: top;
+	width: 300px;
+	padding: 0px 0px 0px 0px;
+}
+
+.colAlignTopWidth3 {
+	vertical-align: top;
+	width: 250px;
+	padding: 0px 0px 0px 0px;
+}
+
+.colFont1 {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.colFont2 {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.colFont3 {
+	font-size: 12px;
+}
+
+.CataloguePanel {
+	text-align: center;
+	cursor: pointer;
+	MARGIN: 0px auto 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.GalleryPanel {
+	text-align: center;
+	cursor: pointer;
+	MARGIN: 0px auto 0px;
+	padding: 0px 0px 0px 0px;
+	border: 0;
+}
+
+.CataloguePanel1 {
+	text-align: center;
+	cursor: pointer;
+	width: 150px;
+	height: 60px;
+	MARGIN: 0px auto 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.cataloguePanelImage {
+	width: 80px;
+	height: 80px;
+}
+
+.ImagePanel {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	padding: 0px
+}
+
+.colFloatLeft {
+	float: left;
+	text-align: left;
+}
+
+.colFloatRight {
+	float: right;
+	text-align: right;
+}
+
+.dataGridBorder {
+	border: 0px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.rich-link-item a {
+	font-family: Arial, Verdana, sans-serif;
+	text-decoration: none;
+	padding: 0 0px;
+}
+
+.rich-link-item a:hover,.rich-ddmenu-label-select {
+	text-decoration: underline;
+}
+
+.rich-link-item .rich-menu-item a:hover {
+	text-decoration: none;
+}
+
+.tabPanelLayout {
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 0px 0px 0px 0px;
+	margin-bottom: 15px;
+}
+
+.tabPanel2Layout {
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 0px 0px 0px 0px;
+	margin-bottom: 15px;
+	border: 0;
+}
+
+.boldsubLabelText {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.boldsubLabelText12 {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.boldsubLabelText25 {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.boldsubLabelgrayText {
+	font-weight: bold;
+	font-size: 12px;
+	color: #4C787E;
+}
+
+.boldsubLabelgrayText20 {
+	font-weight: bold;
+	font-size: 20px;
+	color: #4C787E;
+}
+
+.boldsubLabelgrayText15 {
+	font-weight: bold;
+	font-size: 15px;
+	color: #4C787E;
+}
+
+.rich-tabhdr-side-border {
+	background-image: none;
+	padding: 0px 0px 0px 0px;
+	border-top: none;
+	border: 0px;
+}
+
+.rich-tabhdr-side-cell {
+	border-top: none;
+	padding: 0px 0px 0px 0px;
+	border: 0px;
+}
+
+.rich-tab-active {
+	
+}
+
+.rich-tab-disabled,.rich-tab-inactive {
+	cursor: pointer;
+}
+
+.comparePanel {
+	height: 50px;
+	width: 230px;
+	border: 0;
+	padding: 0px;
+}
+
+.comparePanel2 {
+	height: 50px;
+	width: 230px;
+	border: 0;
+	padding: 0px;
+	background-color: #EBEFF5;
+}
+
+.comparePhotoPanel {
+	height: 100px;
+	width: 230px;
+	border: 0;
+	padding: 0px;
+}
+
+.compareTitlePhotoPanel {
+	height: 100px;
+	width: 150px;
+	border: 0;
+	padding: 0px;
+}
+
+.compareTitlePanel {
+	height: 50px;
+	width: 150px;
+	border: 0;
+	padding: 0px;
+}
+
+.compareTitlePanel2 {
+	height: 50px;
+	width: 150px;
+	border: 0;
+	padding: 0px;
+	background-color: #806D7E;
+}
+
+.whiteColorText {
+	color: white;
+}
+
+.panel1 {
+	padding: 0px;
+	border: 0;
+}
+
+.panel2 {
+	padding: 0px;
+	border: 0;
+}
+
+.star-rating {
+	width: 80px;
+	height: 16px;
+	float: left;
+	background: url(../img/ratings.png);
+	cursor: pointer;
+}
+
+.star {
+	width: 16px;
+	height: 16px;
+	float: left;
+}
+
+.result {
+	float: left;
+	height: 16px;
+	color: #454545;
+	margin-left: 5px;
+	line-height: 110%;
+}
+
+.actionButtonBgColor {
+	background-color: white;
+}
+
+.logoText {
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: Rockwell Extra Bold;
+}
+
+.rich-dtascroller-table {
+	border: 0px;
+}
+
+.rich-datascr-button {
+	border-color: #FFCF79;
+}
+
+.rich-datascr-ctrls-separator {
+	padding: 5px 5px 5px 5px;
+}
+
+.rich-datascr-act {
+	background-color: #FFCF79;
+	border-top-color: #FFCF79;
+}
+
+.rich-pmenu {
+	background-color: #EFEFEF;
+}
+
+.rich-pmenu-item {
+	background-color: #EFEFEF;
+	border: 0px;
+}
+
+.rich-pmenu-hovered-element {
+	background-color: #EFEFEF;
+	font-weight: bold;
+}
+
+.rich-pmenu-group {
+	background-color: #EFEFEF;
+	border: 0px;
+}
+
+.formPanel {
+	border: 0px;
+	border-color: #c7ceda;
+	padding: 1px 3px 1px 2px;
+}
+
+.tabelPanel {
+	border-color: #c7ceda;
+}
+
+.row1 {
+	background-color: #ffffff;
+}
+
+.row2 {
+	background-color: #F6F6F6;
+}
+
+.font8 {
+	font-size: 11px;
+}
+
+.messages {
+	list-style: none;
+	background: #FFDDDD no-repeat 6px 50%;
+	border: 1px solid #FF0000;
+	display: block;
+	font-weight: bold;
+	margin: 2px auto 14px;
+	padding: 6px 6px 6px 6px;
+	text-align: left;
+}
+
+.messages li {
+	background: no-repeat left center;
+	padding-top: 1px;
+	padding-left: 20px;
+	margin-left: 3px;
+}
+
+.messages li.infomsg {
+	background-image: url(../img/msginfo.png);
+}
+
+.messages li.errormsg {
+	background-image: url(../img/msgerror.png);
+}
+
+.messages li.warnmsg {
+	background-image: url(../img/msgwarn.png);
+}

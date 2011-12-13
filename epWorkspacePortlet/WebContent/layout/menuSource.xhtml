@@ -1,0 +1,23 @@
+<rich:toolBar xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	 itemSeparator="line">
+	<rich:toolBarGroup>
+            <s:link id="menuCatalogueId" view="/Source/catalogueL1.xhtml"
+			propagation="none" action="#{productImpl.chanceValue(0)}">
+			<h:graphicImage value="../img/Font-Folder-icon.png"/>
+			<h:outputLabel value="Catalogue Search" style="cursor:pointer;"/>
+		</s:link>
+	</rich:toolBarGroup>
+	<!-- @newMenuItem@ -->
+	<rich:toolBarGroup location="right">
+		<h:panelGrid columns="2">
+			<s:button id="menuCartId" view="/Source/shoppingCart.xhtml"
+				image="../img/cart-icon.png" propagation="none" style="height:15px;"/>
+			<h:outputLabel value="(1)" />
+		</h:panelGrid>
+	</rich:toolBarGroup>
+</rich:toolBar>

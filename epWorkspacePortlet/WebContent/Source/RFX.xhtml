@@ -1,0 +1,304 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="body">
+		<h:form>
+			<rich:panel>
+				<h:panelGrid columns="2" width="100%">
+					<h:panelGroup>
+						<fieldset class="demo_fieldset">
+							<legend class="demo_legend" style="font-weight: bold;">From</legend>
+							<div class="sample-container">
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="Ministry" style="font-weight:bold;" />
+									<h:outputText value="KEM PENERANGAN" />
+
+									<h:outputLabel value="Department" style="font-weight:bold;" />
+									<h:outputText value="KEM PENERANGAN, KOMUNIKASI AND KEBUDAYAAN" />
+
+									<h:outputLabel value="Division" style="font-weight:bold;" />
+									<h:outputText value="JAB PENERANGAN I/PEJ - PENTABIRAN AND KEW" />
+									<h:outputLabel value="Address" style="font-weight:bold;" />
+									<h:inputTextarea cols="50" disabled="true"
+										value="JABATAN PENERANAGAN MALAYSIA, TK 7,10, 11, 12, 14 DAN 15 WISMA SIME DARBY JALAN RAJA LAUT, 50612, kUALA LUMPUR" />
+
+									<h:outputLabel value="Requisitioner" style="font-weight:bold;" />
+									<h:outputText value="MASNOM BINTI PUNGOT" />
+								</h:panelGrid>
+								<rich:spacer width="100" />
+							</div>
+						</fieldset>
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<rich:panel>
+							<h:panelGrid columns="2" width="100%">
+								<h:panelGroup>
+									<font size="3">Status </font>
+								</h:panelGroup>
+								<h:panelGroup>
+									<font size="3">Pending Submission</font>
+								</h:panelGroup>
+
+								<h:outputLabel value="Date Created" style="font-weight:bold;" />
+								<h:outputText value="01/07/2011" />
+
+								<h:outputLabel value="RFX No." style="font-weight:bold;" />
+								<h:outputText value="RFX10000010000" />
+							</h:panelGrid>
+							<rich:spacer height="45" />
+						</rich:panel>
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:panelGroup>
+							<fieldset class="demo_fieldset">
+								<legend class="demo_legend" style="font-weight: bold;">Received
+									Account</legend>
+								<div class="sample-container">
+									<h:panelGrid columns="2" width="100%">
+										<h:outputLabel value="Jabatan" style="font-weight:bold;" />
+										<h:outputText value="0281" />
+
+										<h:outputLabel value="PTJ Code" style="font-weight:bold;" />
+										<rich:comboBox value="" directInputSuggestions="true"
+											defaultLabel="Enter some value" />
+									</h:panelGrid>
+								</div>
+							</fieldset>
+						</h:panelGroup>
+						<h:panelGroup>
+							<fieldset class="demo_fieldset">
+								<legend class="demo_legend" style="font-weight: bold;">RFX</legend>
+								<div class="sample-container">
+									<h:panelGrid columns="2" width="100%">
+										<h:outputLabel value="Reference No *"
+											style="font-weight:bold;" />
+										<h:inputText value="" />
+
+										<h:outputLabel value="Remarks" style="font-weight:bold;" />
+										<h:inputTextarea value="" rows="4" />
+									</h:panelGrid>
+								</div>
+							</fieldset>
+						</h:panelGroup>
+					</h:panelGroup>
+					<h:panelGroup>
+						<fieldset class="demo_fieldset">
+							<legend class="demo_legend" style="font-weight: bold;">Charge
+								Account</legend>
+							<div class="sample-container">
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="Jabatan Code" style="font-weight:bold;" />
+									<rich:comboBox value="" directInputSuggestions="true"
+										defaultLabel="Enter some value" />
+
+									<h:outputLabel value="PTJ Code" style="font-weight:bold;" />
+									<rich:comboBox value="" directInputSuggestions="true"
+										defaultLabel="Enter some value" />
+
+									<h:outputLabel value="Maksud" style="font-weight:bold;" />
+									<rich:comboBox value="" directInputSuggestions="true"
+										defaultLabel="Enter some value" />
+
+
+									<h:outputLabel value="Mode of Financing (loan)*"
+										style="font-weight:bold;" />
+									<h:selectOneRadio value="1">
+										<f:selectItem itemLabel="Yes" itemValue="1" />
+										<f:selectItem itemLabel="No" itemValue="2" />
+									</h:selectOneRadio>
+
+									<h:outputLabel value="Accountant General Office*"
+										style="font-weight:bold;" />
+									<rich:comboBox value="" directInputSuggestions="true"
+										defaultLabel="Enter some value" />
+
+									<h:outputLabel value="Financial Year*"
+										style="font-weight:bold;" />
+									<rich:comboBox value="" directInputSuggestions="true"
+										defaultLabel="Enter some value" />
+
+									<h:outputLabel value="Acknowledgment Expiry Date/Time *"
+										style="font-weight:bold;" />
+									<h:panelGrid columns="3">
+										<rich:calendar showApplyButton="true" cellWidth="24px"
+											cellHeight="22px" style="width:200px">
+										</rich:calendar>
+										<h:panelGrid columns="2">
+											<rich:inputNumberSpinner value="" maxValue="23" />
+											<h:outputLabel value="HH" style="font-weight:bold;" />
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<rich:inputNumberSpinner value="" maxValue="59" />
+											<h:outputLabel value="MM" style="font-weight:bold;" />
+										</h:panelGrid>
+									</h:panelGrid>
+								</h:panelGrid>
+							</div>
+						</fieldset>
+					</h:panelGroup>
+
+				</h:panelGrid>
+				<h:panelGrid columns="4">
+					<rich:comboBox defaultLabel="Enter some value">
+						<f:selectItem itemValue="Submit for REQ" />
+						<f:selectItem itemValue="Add more Product" />
+						<f:selectItem itemValue="Send Out RFI" />
+					</rich:comboBox>
+					<h:commandButton value="Submit" />
+					<s:button value="REQ" view="/GOF/GOF.xhtml" />
+					<h:commandButton value="Continue"
+						action="/Source/catalogueL1.xhtml" />
+				</h:panelGrid>
+
+				<h:panelGroup>
+					<fieldset class="demo_fieldset">
+						<legend class="demo_legend" style="font-weight: bold;">Details</legend>
+						<div class="sample-container">
+							<h:panelGrid columns="1">
+								<a4j:outputPanel id="panel" layout="block">
+									<rich:panel style="float:left; width:100%;">
+										<h:panelGrid columns="8">
+											<rich:column width="100px">
+												<h:outputLabel value="Photo" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="350px">
+												<h:outputLabel value="Informtion" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="200px">
+												<h:outputLabel value="" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="100px">
+												<h:outputLabel value="Total (RM)" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="100px">
+												<h:outputLabel value="RFI" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="300px">
+												<h:outputLabel value="Accept" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="100px">
+												<h:outputLabel value="Status" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="100px">
+												<h:outputLabel value="Action" style="font-weight:bold;" />
+											</rich:column>
+										</h:panelGrid>
+									</rich:panel>
+									<a4j:repeat value="#{managerImpl.shoppingCartList}" var="cap"
+										rows="10" id="repeat">
+										<rich:panel style="float:left; width:100%;">
+											<h:panelGrid columns="8">
+												<rich:column width="100px">
+													<h:graphicImage value="/img/#{cap.img}" />
+												</rich:column>
+												<rich:column width="300px">
+													<h:panelGrid columns="2" width="100%">
+														<h:outputLabel value="Product Name"
+															style="font-weight:bold;" />
+														<h:outputText value="#{cap.name}" />
+
+														<h:outputLabel value="One Time Contract"
+															style="font-weight:bold;" />
+														<h:outputText value="No" />
+
+														<h:outputLabel value="Prog-Akt/Amanah/Project-Setia"
+															style="font-weight:bold;" />
+														<rich:comboBox value="" directInputSuggestions="true"
+															defaultLabel="Enter some value" />
+
+													</h:panelGrid>
+												</rich:column>
+												<rich:column width="200px">
+													<h:panelGrid columns="2" width="100%">
+														<h:outputLabel value="Measurement"
+															style="font-weight:bold;" />
+														<h:outputText value="piece" />
+
+														<h:outputLabel value="Price" style="font-weight:bold;" />
+														<h:outputText value="#{cap.price}" />
+
+														<h:outputLabel value="Qty" style="font-weight:bold;" />
+														<rich:inputNumberSpinner value="#{cap.qty}"
+															maxValue="9999999999" minValue="1" />
+													</h:panelGrid>
+												</rich:column>
+												<rich:column width="100px">
+													<h:outputText value="#{cap.price}" />
+												</rich:column>
+												<rich:column width="100px">
+													<s:link value="#{cap.id}" rendered="#{cap.id!='B/PO'}" />
+													<h:outputText value="#{cap.id}"
+														rendered="#{cap.id=='B/PO'}" />
+												</rich:column>
+												<rich:column width="300px">
+													<h:panelGrid columns="2">
+														<h:outputLabel value="Supplier" style="font-weight:bold;" />
+														<h:selectOneRadio value="1">
+															<f:selectItem itemLabel="YES" itemValue="1" />
+															<f:selectItem itemLabel="NO" itemValue="2" />
+														</h:selectOneRadio>
+
+														<h:outputLabel value="Requisitioner"
+															style="font-weight:bold;" />
+														<h:selectOneRadio value="1">
+															<f:selectItem itemLabel="YES" itemValue="1" />
+															<f:selectItem itemLabel="NO" itemValue="2" />
+														</h:selectOneRadio>
+													</h:panelGrid>
+												</rich:column>
+												<rich:column width="100px">
+													<h:graphicImage value="/img/#{cap.status}" />
+												</rich:column>
+												<rich:column width="100px">
+													<h:panelGrid columns="2" width="100%">
+														<h:commandButton image="/img/Search-icon.png"
+															action="/Source/product.xhtml" />
+														<h:commandButton image="/img/trash-icon.png" />
+													</h:panelGrid>
+												</rich:column>
+											</h:panelGrid>
+										</rich:panel>
+									</a4j:repeat>
+									<rich:panel style="float:left; width:100%;">
+										<h:panelGrid columns="8">
+											<rich:column width="100px">
+												<h:graphicImage value="/img/process-accept-icon.png" />
+												<h:outputLabel value="Accept" />
+											</rich:column>
+											<rich:column width="350px">
+												<h:graphicImage value="/img/process-remove-icon.png" />
+												<h:outputLabel value="Reject" />
+												<rich:spacer width="30" />
+												<h:graphicImage value="/img/process-icon.png" />
+												<h:outputLabel value="Pending" />
+											</rich:column>
+											<rich:column width="200px">
+												<h:outputLabel value="Grand Total (RM)"
+													style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="100px">
+												<h:outputLabel value="400" style="font-weight:bold;" />
+											</rich:column>
+											<rich:column width="100px" />
+											<rich:column width="300px" />
+											<rich:column width="100px" />
+											<rich:column width="100px" />
+										</h:panelGrid>
+									</rich:panel>
+								</a4j:outputPanel>
+							</h:panelGrid>
+						</div>
+					</fieldset>
+				</h:panelGroup>
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	<application>
+		<view-handler>org.jboss.portletbridge.application.PortletViewHandler</view-handler>
+		<state-manager>org.jboss.portletbridge.application.PortletStateManager</state-manager>
+
+		<resource-bundle>
+			<base-name>com.bundle.messagesParam</base-name>
+			<var>messages</var>
+		</resource-bundle>
+	</application>
+	<managed-bean>
+		<managed-bean-name>productImpl</managed-bean-name>
+		<managed-bean-class>org.archisoft.test.ProductImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>taskImpl</managed-bean-name>
+		<managed-bean-class>org.archisoft.test.TaskImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>tasksFirstUI</from-outcome>
+			<to-view-id>/Tasks/tasksFirst.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tasksUI</from-outcome>
+			<to-view-id>/Tasks/tasks.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tasksFormUI</from-outcome>
+			<to-view-id>/Tasks/tasksForm.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>shopsGOFUI</from-outcome>
+			<to-view-id>/GOF/ShopsGOF.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>catalogueUI</from-outcome>
+			<to-view-id>/Source/catalogueFirst.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>catalogueUI</from-outcome>
+			<to-view-id>/Source/catalogue.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>productListUI</from-outcome>
+			<to-view-id>/Source/productList.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>productUI</from-outcome>
+			<to-view-id>/Source/product.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>favoritesMgtUI</from-outcome>
+			<to-view-id>/Source/favoritesMgt.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>shoppingCartUI</from-outcome>
+			<to-view-id>/Source/shoppingCart.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>compareUI</from-outcome>
+			<to-view-id>/Source/compare.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

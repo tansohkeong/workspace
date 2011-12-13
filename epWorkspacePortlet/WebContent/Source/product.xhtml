@@ -1,0 +1,322 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form id="productForm">
+			<ui:include src="/Source/search.xhtml" />
+			<ui:include src="/Source/navigationBar.xhtml" />
+			<h:panelGrid columns="2"
+				columnClasses="colAlignTop,colAlignTopWidth2" width="100%">
+				<rich:panel>
+					<h:panelGrid>
+						<h:outputLabel styleClass="boldsubLabelText25"
+							value="#{productImpl.product.productName}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="3"
+						columnClasses="colAlignTop,colAlignTop,colAlignTopWidth1">
+						<h:panelGroup>
+							<rich:spacer width="150" />
+							<rich:panel styleClass="GalleryPanel">
+								<img id="image"
+									src="#{productImpl.contextPath}/img/product/computer/#{productImpl.product.img}"
+									height="100" width="100" />
+
+								<h:panelGrid columns="3">
+									<h:graphicImage value="/img/Actions-arrow-left-icon.png"
+										style="cursor: pointer;"
+										rendered="#{not empty productImpl.product.galleryList}"
+										onclick="#{rich:component('galleryList')}.previous()"
+										alt="arr_left" />
+									<rich:dataGrid id="productImageList"
+										value="#{productImpl.product.galleryList}" var="gallery"
+										columns="3" elements="3" columnClasses="dataGridBorder"
+										rowClasses="dataGridBorder" styleClass="dataGridBorder">
+										<rich:panel id="fadebox" styleClass="ImagePanel"
+											onmouseover="document.getElementById(this.id+'_body').style.background='#FFCF79'"
+											onmouseout="document.getElementById(this.id+'_body').style.background=''">
+
+											<img
+												src="#{productImpl.contextPath}/img/product/computer/#{gallery}"
+												height="30" width="30"
+												onmouseover="image.src='#{productImpl.contextPath}/img/product/computer/#{gallery}'" />
+										</rich:panel>
+									</rich:dataGrid>
+									<h:graphicImage value="/img/Actions-arrow-right-icon.png"
+										style="cursor: pointer;"
+										rendered="#{not empty productImpl.product.galleryList}"
+										onclick="#{rich:component('galleryList')}.next()"
+										alt="arr_right" />
+								</h:panelGrid>
+								<rich:datascroller for="productImageList" id="galleryList"
+									render="repeat" stepControls="hide" boundaryControls="hide"
+									fastControls="hide" />
+							</rich:panel>
+						</h:panelGroup>
+						<h:panelGroup>
+							<rich:spacer width="50" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:panelGrid columns="2"
+								columnClasses="colFont1,colFont1,colFont1">
+								<h:outputText value="Price: (RM) "
+									styleClass="boldsubLabelgrayText15" />
+								<h:outputText value="#{productImpl.product.unitPrice}"
+									styleClass="colFont2">
+									<f:convertNumber type="number" pattern="#0.00" />
+								</h:outputText>
+								<h:outputText value="Qty:" styleClass="boldsubLabelgrayText15" />
+								<h:inputText id="qtyOrder"
+									value="#{productImpl.defaultQtyOrder}" size="6"
+									valueChangeListener="#{productImpl.updateOrderQty}"
+									immediate="true" />
+								<h:outputText value="Minimum Order Quantity: "
+									styleClass="boldsubLabelgrayText15" />
+								<h:outputText value="10" />
+								<h:outputText value="Rate" styleClass="boldsubLabelgrayText15" />
+								<div class="star-rating" style="background-position: 0 -80px;">
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+								</div>
+
+							</h:panelGrid>
+
+							<h:panelGrid columns="4">
+								<rich:comboBox value="#{productImpl.favoritesTypeValue}"
+									suggestionValues="#{productImpl.favoritesList}" />
+
+								<rich:spacer width="5" />
+
+								<h:commandButton id="favoritesAction"
+									value="Add To My Favorites"
+									action="#{productImpl.FavoritesAction}" />
+								<h:commandButton value="Add To Cart"
+									action="#{productImpl.addToCart}" />
+							</h:panelGrid>
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<rich:spacer height="10" />
+					<rich:tabPanel switchType="client" contentClass="tabPanel2Layout">
+						<rich:tab label="Product Details">
+							<rich:spacer height="10" />
+							<rich:panel>
+								<h:panelGrid columns="2">
+									<h:outputText value="Product Description" />
+									<h:outputText value="#{productImpl.product.productName}" />
+								</h:panelGrid>
+								<rich:spacer width="5" />
+								<h:outputLabel value="#{productImpl.product.remarks}" />
+								<div style="clear: both" />
+							</rich:panel>
+							<rich:spacer height="10" />
+							<rich:panel>
+
+								<ui:repeat var="spec" value="#{productImpl.product.specList}">
+									<h:panelGrid columns="2">
+										<h:panelGrid columns="1" width="100">
+											<h:outputText value="#{spec.code}" />
+										</h:panelGrid>
+										<h:outputText value="#{spec.name}" />
+									</h:panelGrid>
+								</ui:repeat>
+
+								<div style="clear: both" />
+							</rich:panel>
+						</rich:tab>
+						<rich:tab label="Company Profile">
+							<rich:spacer height="10" />
+							<rich:panel>
+								<h:outputText value="Company Name" />
+								<h:outputText value="Wambeck Trading" />
+								<rich:spacer width="5" />
+								<h:outputLabel
+									value="Wambeck Trading was established in the year 2007 in Malaysia. 
+										This company was set-up with the holistic intention to provide good quality value money's worth products to all global customers.
+										Our feverant aspiration and belief is to put our customers the forefont on everything we do. 
+										To achive excellence in our endeavour, we sincerely hope to be a partner in the plight of our customers and clients business growth and success.
+										A gateway offering customers a comprehensive range of cost saving products" />
+								<div style="clear: both" />
+
+							</rich:panel>
+						</rich:tab>
+						<rich:tab label="Reviews">
+							<rich:spacer height="10" />
+							<rich:panel>
+								<h:panelGrid columns="2">
+									<h:outputText value="User Reviews" />
+									<h:outputText value="#{productImpl.product.productName}" />
+
+									<h:outputText value="Overall" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -80px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+
+									<h:outputText value="Value" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -96px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+									<h:outputText value="Processor Speed" />
+									<h:panelGroup>
+										<div class="star-rating"
+											style="background-position: 0 -129px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+									<h:outputText value="Support" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -96px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+									<h:outputText value="Quality" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -64px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+									<h:outputText value="Graphics" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -64px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+
+									<h:outputText value="attery Life" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -96px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+
+									<h:outputText value="Features" />
+									<h:panelGroup>
+										<div class="star-rating" style="background-position: 0 -64px;">
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+											<div class="star"></div>
+										</div>
+									</h:panelGroup>
+								</h:panelGrid>
+								<div style="clear: both" />
+							</rich:panel>
+						</rich:tab>
+					</rich:tabPanel>
+					<rich:spacer height="10" />
+					<rich:panel rendered="#{not empty productImpl.relatedProductList}">
+						<f:facet name="header">
+							<h:outputText value="Related Products"></h:outputText>
+						</f:facet>
+						<h:panelGrid columns="3" width="100%">
+							<h:graphicImage value="/img/Actions-arrow-left-icon.png"
+								style="cursor: pointer;"
+								rendered="#{not empty productImpl.relatedProductList}"
+								onclick="#{rich:component('relatedProductList')}.previous()"
+								alt="arr_left" />
+							<rich:dataGrid id="relatedProductDataList" width="100%"
+								value="#{productImpl.relatedProductList}" var="productRelated"
+								columns="4" elements="4" columnClasses="dataGridBorder"
+								rowClasses="dataGridBorder" styleClass="dataGridBorder">
+								<rich:panel id="productId" styleClass="CataloguePanel"
+									rendered="#{productRelated.productName != ''}"
+									onmouseover="document.getElementById(this.id).style.background='#FFCF79'"
+									onmouseout="document.getElementById(this.id).style.background=''">
+									<h:panelGrid styleClass="CataloguePanel1">
+										<h:outputText value="#{productRelated.productName}" />
+									</h:panelGrid>
+									<h:panelGrid columns="2">
+										<h:panelGroup>
+											<h:graphicImage
+												value="/img/product/computer/#{productRelated.img}"
+												styleClass="cataloguePanelImage" />
+										</h:panelGroup>
+
+										<h:panelGroup>
+											<h:outputLabel value="#{messages['rm']}"
+												styleClass="outputText" />
+											<h:outputText value="#{productRelated.unitPrice}">
+												<f:convertNumber type="number" pattern="#0.00" />
+											</h:outputText>
+										</h:panelGroup>
+									</h:panelGrid>
+									<a4j:support event="onclick"
+										action="#{productImpl.checkProduct}" ajaxSingle="true"
+										actionListener="#{productImpl.updateParam}">
+										<f:attribute name="paramType" value="1" />
+										<f:attribute name="productId"
+											value="#{productRelated.productId}" />
+									</a4j:support>
+								</rich:panel>
+								<rich:panel style="border:0;"
+									rendered="#{productRelated.productName eq ''}">
+									<h:panelGrid styleClass="CataloguePanel1" />
+								</rich:panel>
+							</rich:dataGrid>
+							<h:graphicImage value="/img/Actions-arrow-right-icon.png"
+								style="cursor: pointer;"
+								rendered="#{not empty productImpl.relatedProductList}"
+								onclick="#{rich:component('relatedProductList')}.next()"
+								alt="arr_right" />
+						</h:panelGrid>
+						<rich:datascroller for="relatedProductDataList"
+							id="relatedProductList" render="repeat" stepControls="hide"
+							boundaryControls="hide" fastControls="hide" />
+					</rich:panel>
+				</rich:panel>
+				<h:panelGroup>
+					<ui:include src="/Source/cartBar.xhtml" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,39 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<h:panelGrid styleClass="actionButtonBgColor" width="100%">
+		<h:panelGroup rendered="#{s:hasRole('Requisitioner')}"
+			style="float:right;">
+			<div class="actionButtons">
+				<h:commandButton value="#{messages['submit']}" />
+				<h:commandButton value="#{messages['edit']}" />
+				<h:commandButton value="#{messages['delete']}" />
+				<h:commandButton value="#{messages['clear']}" />
+				<h:commandButton value="#{messages['print']}" />
+				<h:commandButton value="#{messages['upload.file']}" />
+			</div>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{s:hasRole('Approver')}" style="float:right;">
+			<div class="actionButtons">
+				<ui:define name="label">#{messages['smart.card.pin']}</ui:define>
+				<h:inputText value="" />
+				<h:commandButton value="#{messages['approve']}" />
+				<h:commandButton value="#{messages['reject']}" />
+				<h:commandButton value="#{messages['revise']}" />
+				<h:commandButton value="#{messages['edit']}" />
+				<h:commandButton value="#{messages['clear']}" />
+				<h:commandButton value="#{messages['print']}" />
+				<h:commandButton value="#{messages['upload.file']}" />
+			</div>
+		</h:panelGroup>
+	</h:panelGrid>
+</f:view>

@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../layout/template.xhtml">
+	<h:panelGrid columns="2" width="100%"
+		rendered="#{not empty productImpl.navigationList}">
+		<h:panelGrid columns="9" styleClass="rich-link-item">
+			<ui:repeat var="navigation" value="#{productImpl.navigationList}">
+				<h:commandLink value="#{navigation.categoryName}"
+					action="#{productImpl.checkCategory}"
+					actionListener="#{productImpl.updateParam}">
+					<f:attribute name="paramType" value="1,2,3,4" />
+					<f:attribute name="categoryId" value="#{navigation.categoryId}" />
+					<f:attribute name="productId" value="" />
+					<f:attribute name="supplierId" value="" />
+					<f:attribute name="brandId" value="" />
+				</h:commandLink>
+				<rich:spacer width="5" />
+				<h:outputLabel value="#{navigation.arrow}" />
+				<rich:spacer width="5" />
+			</ui:repeat>
+		</h:panelGrid>
+		<h:panelGroup styleClass="colFloatRight">
+			<h:panelGrid columns="1" styleClass="rich-link-item">
+				<h:commandLink value="#{messages['back.to.shops']}"
+					styleClass="boldsubLabelgrayText"
+					action="#{productImpl.navCategory}"
+					actionListener="#{productImpl.updateParam}">
+					<f:attribute name="paramType" value="1,2,3,4" />
+					<f:attribute name="supplierId" value="" />
+					<f:attribute name="brandId" value="" />
+					<f:attribute name="productId" value="" />
+					<f:attribute name="categoryId" value="0" />
+				</h:commandLink>
+			</h:panelGrid>
+		</h:panelGroup>
+	</h:panelGrid>
+</f:view>

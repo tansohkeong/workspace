@@ -1,0 +1,166 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form id="shopForm">
+			<h:panelGrid columns="2" width="100%">
+				<h:outputLabel value="Shopping Cart"
+					styleClass="boldsubLabelgrayText20" />
+
+				<h:panelGroup styleClass="colFloatRight">
+					<h:panelGrid columns="1" styleClass="rich-link-item">
+						<h:commandLink value="#{messages['back.to.shops']}"
+							styleClass="boldsubLabelgrayText"
+							action="#{productImpl.navCategory}" />
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:panelGrid>
+
+			<rich:panel>
+				<ui:include src="/Source/shoppingCartButton.xhtml" />
+				<h:panelGrid columns="2" width="100%"
+					columnClasses="colAlignTop,colAlignTop">
+					<rich:panel styleClass="formPanel">
+						<f:facet name="header">From</f:facet>
+
+						<h:panelGrid columns="3">
+							<h:outputLabel value="#{messages['ministry']}" />
+							<rich:spacer width="5" />
+							<h:outputText value="KEM PENERANGAN" />
+
+							<h:outputLabel value="#{messages['department']}" />
+							<rich:spacer width="5" />
+							<h:outputText value="KEM PENERANGAN, KOMUNIKASI AND KEBUDAYAAN" />
+
+
+							<h:outputLabel value="#{messages['division']}" />
+							<rich:spacer width="5" />
+							<h:outputText value="JAB PENERANGAN I/PEJ - PENTABIRAN AND KEW" />
+
+
+							<h:outputLabel value="#{messages['requisitioner']}" />
+							<rich:spacer width="5" />
+							<h:outputText value="JAB PENERANGAN I/PEJ - PENTABIRAN AND KEW" />
+						</h:panelGrid>
+						<div style="clear: both" />
+					</rich:panel>
+					<rich:panel styleClass="formPanel">
+						<f:facet name="header">Cart
+								Information</f:facet>
+
+						<h:panelGrid columns="3">
+							<h:outputLabel value="Cart Type" />
+							<rich:spacer width="5" />
+							<h:outputText value="Product" />
+
+
+							<h:outputLabel value="Existing Cart" />
+							<rich:spacer width="5" />
+							<h:inputText value="" />
+
+							<h:outputLabel value="ECart Name" />
+							<rich:spacer width="5" />
+							<h:inputText value="" id="cartName" />
+						</h:panelGrid>
+						<div style="clear: both" />
+					</rich:panel>
+				</h:panelGrid>
+				<rich:spacer height="5" />
+				<h:panelGroup>
+					<rich:dataTable id="cartlists" rowClasses="row1, row2" cellpadding="0"
+						cellspacing="0" width="100%" border="0" var="expense"
+						value="#{productImpl.shoppingCartList}">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column width="70">
+									<h:selectBooleanCheckbox id="selectAll" title="selectAll"
+										value="#{productImpl.checkAll}"
+										valueChangeListener="#{productImpl.selectAllComponents}">
+										<a4j:support event="onclick" reRender="cartlists" />
+									</h:selectBooleanCheckbox>
+									<h:outputLabel value="Select All" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Product Name" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Unit Of Measurement" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Unit Price (RM)" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Quantity" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Total (RM)" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:selectBooleanCheckbox value="#{expense.checked}"
+								immediate="true" />
+						</rich:column>
+						<rich:column styleClass="rich-link-item">
+							<h:commandLink action="#{productImpl.navProduct}"
+								value="#{expense.productName}"
+								actionListener="#{productImpl.updateParam}">
+								<f:attribute name="paramType" value="1" />
+								<f:attribute name="productId" value="#{expense.productId}" />
+							</h:commandLink>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="unit"></h:outputText>
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{expense.unitPrice}">
+								<f:convertNumber type="number" pattern="#0.00" />
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<rich:inputNumberSpinner value="#{expense.qtyOrder}"
+								maxValue="9999999999" minValue="1">
+								<a4j:support event="onchange" reRender="totalValue,grandTotal" />
+							</rich:inputNumberSpinner>
+						</rich:column>
+						<rich:column>
+							<h:outputText id="totalValue" value="#{expense.total}">
+								<f:convertNumber type="number" pattern="#0.00" />
+							</h:outputText>
+						</rich:column>
+
+						<f:facet name="footer">
+
+							<rich:columnGroup>
+								<rich:column />
+								<rich:column />
+								<rich:column />
+								<rich:column />
+
+								<rich:column>Grand Total (RM)</rich:column>
+								<rich:column>
+									<h:outputText id="grandTotal"
+										value="#{productImpl.totalPurchase}">
+										<f:convertNumber type="number" pattern="#0.00" />
+									</h:outputText>
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+					</rich:dataTable>
+				</h:panelGroup>
+				<rich:spacer height="10" />
+				<ui:include src="/Source/shoppingCartButton.xhtml" />
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

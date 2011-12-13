@@ -1,0 +1,174 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<style>
+.tooltip {
+	background-color: white;
+	border-width: 3px;
+	padding: 10px;
+}
+
+.tooltip-text {
+	width: 350px;
+	height: 80px;
+	cursor: arrow;
+	border-width: 2px;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.tooltipData {
+	font-weight: bold;
+}
+</style>
+
+		<rich:dragIndicator id="indicator" />
+		<h:form id="productListForm">
+			<ui:include src="/Source/search.xhtml" />
+			<ui:include src="/Source/navigationBar.xhtml" />
+			<h:panelGrid columns="3"
+				columnClasses="colAlignTopWidth3,colAlignTop,colAlignTopWidth2"
+				width="100%">
+				<h:panelGroup>
+					<ui:include src="/Source/categoryBar.xhtml" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<rich:panel style="margin-left : 5px;">
+						<f:facet name="header">
+							<h:outputText value="Product Store" styleClass="outputText" />
+						</f:facet>
+
+						<h:panelGroup styleClass="colFloatRight">
+							<h:panelGrid columns="2" styleClass="rich-link-item">
+								<h:commandLink id="compareButton"
+									value="Compare (#{fn:length(productImpl.compareList)})"
+									action="#{productImpl.navCompare}"
+									disabled="#{2 > fn:length(productImpl.compareList)}" />
+								<h:commandLink id="compareClean" value="(Clear)"
+									action="#{productImpl.cleanCompareList}" style="color:red;" />
+							</h:panelGrid>
+						</h:panelGroup>
+
+						<rich:dataGrid id="categoryList"
+							value="#{productImpl.productList}" var="product" columns="1"
+							elements="5" columnClasses="dataGridBorder"
+							rowClasses="dataGridBorder" styleClass="dataGridBorder"
+							width="100%">
+							<rich:separator height="2" lineType="solid" />
+							<rich:spacer height="5" />
+							<a4j:outputPanel layout="block">
+
+								<rich:dragSupport dragIndicator=":indicator" dragType="Product"
+									dragValue="#{product.productId}">
+									<rich:dndParam name="label" value="#{product.productName}" />
+								</rich:dragSupport>
+
+								<rich:toolTip followMouse="true" direction="top-right"
+									showDelay="500" styleClass="tooltip">
+									<span style="white-space: nowrap">To add, drag and drop
+										over <strong>Shopping Cart</strong> or <strong>My
+											Favorites</strong>.</span>
+								</rich:toolTip>
+								<h:panelGrid columns="3" border="0" styleClass="rich-link-item"
+									columnClasses="colAlignTopWidth1,colAlignTop,colAlignTopWidth1"
+									width="100%">
+
+									<h:panelGroup styleClass="colFloatLeft">
+										<h:graphicImage value="/img/product/computer/#{product.img}"
+											height="80" width="80" />
+									</h:panelGroup>
+
+									<h:panelGroup>
+										<h:panelGrid columns="1">
+
+											<a4j:commandLink value="#{product.productName}"
+												action="#{productImpl.cleanProduct}"
+												actionListener="#{productImpl.updateParam}">
+												<f:attribute name="paramType" value="1,2" />
+												<f:attribute name="productId" value="#{product.productId}" />
+												<f:attribute name="categoryId" value="#{product.categoryId}" />
+											</a4j:commandLink>
+
+											<h:outputText value="#{product.remarks}"
+												styleClass="outputText" />
+											<h:panelGrid columns="3">
+												<h:selectBooleanCheckbox value="#{product.compare}"
+													immediate="true">
+													<a4j:support event="onclick"
+														actionListener="#{productImpl.updateParam}"
+														action="#{productImpl.changeComparList}" ajaxSingle="true"
+														reRender="compareButton">
+														<f:attribute name="paramType" value="1,5" />
+														<f:attribute name="categoryId"
+															value="#{product.categoryId}" />
+														<f:attribute name="compareProductId"
+															value="#{product.productId}" />
+													</a4j:support>
+												</h:selectBooleanCheckbox>
+												<rich:spacer width="5" />
+												<h:outputText value="Add To Compare" styleClass="outputText" />
+											</h:panelGrid>
+
+										</h:panelGrid>
+									</h:panelGroup>
+
+
+									<h:panelGroup styleClass="colFloatRight">
+										<h:panelGrid columns="3">
+											<h:outputLabel value="#{messages['rm']}"
+												styleClass="outputText" />
+											<rich:spacer width="5" />
+											<h:outputText value="#{product.unitPrice}">
+												<f:convertNumber type="number" pattern="#0.00" />
+											</h:outputText>
+
+
+											<h:outputLabel value="#{messages['qty']}"
+												styleClass="outputText" />
+											<rich:spacer width="5" />
+											<h:inputText id="qtyOrder"
+												value="#{productImpl.defaultQtyOrder}" size="6"
+												immediate="true"
+												valueChangeListener="#{productImpl.updateOrderQty}" />
+										</h:panelGrid>
+										<h:commandButton value="Add To Cart"
+											action="#{productImpl.addToCart}"
+											actionListener="#{productImpl.updateParam}">
+											<f:attribute name="paramType" value="1" />
+											<f:attribute name="productId" value="#{product.productId}" />
+										</h:commandButton>
+									</h:panelGroup>
+								</h:panelGrid>
+							</a4j:outputPanel>
+						</rich:dataGrid>
+						<rich:separator height="2" lineType="solid" />
+						<h:panelGroup rendered="#{fn:length(productImpl.productList) !=0}">
+							<rich:spacer height="10" />
+							<h:panelGrid columns="2" width="80%">
+								<h:outputLabel
+									value="Total Results (#{fn:length(productImpl.productList)})" />
+								<rich:datascroller for="categoryList" renderIfSinglePage="false">
+								</rich:datascroller>
+							</h:panelGrid>
+						</h:panelGroup>
+						<h:outputLabel value="The search returned no results."
+							rendered="#{empty productImpl.productList}" />
+					</rich:panel>
+				</h:panelGroup>
+				<h:panelGroup>
+					<ui:include src="/Source/cartBar.xhtml" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

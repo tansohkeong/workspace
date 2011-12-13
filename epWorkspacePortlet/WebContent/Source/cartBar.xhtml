@@ -1,0 +1,107 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:panel id="shoppingCartPanel">
+		<f:facet name="header">
+			<h:outputText value="Shopping Cart" />
+		</f:facet>
+		<rich:dropSupport id="Item" acceptedTypes="Product" dropValue="Item"
+			dropListener="#{productImpl.processDrop}"
+			action="#{productImpl.navProductList}">
+		</rich:dropSupport>
+		<h:panelGrid columns="1">
+
+			<h:outputLabel
+				value="Your Cart contain #{fn:length(productImpl.shoppingCartList)} lines" />
+
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Total Amount RM " />
+				<h:outputLabel value="#{productImpl.totalPurchase}">
+					<f:convertNumber type="number" pattern="#0.00" />
+				</h:outputLabel>
+			</h:panelGrid>
+			<rich:spacer width="150" />
+			<h:commandButton value="View Cart and Checkout"
+				action="#{productImpl.navCartBar}"
+				rendered="#{not empty productImpl.shoppingCartList}" />
+		</h:panelGrid>
+	</rich:panel>
+	<rich:spacer height="5" />
+	<rich:panel>
+		<f:facet name="header">
+			<h:outputText value="My Favorites" />
+		</f:facet>
+		<h:panelGrid columns="1" width="100%">
+			<rich:simpleTogglePanel switchType="client" width="100%"
+				styleClass="tabPanel2Layout"
+				height="#{productImpl.favoritesProductHeight}">
+				<f:facet name="header">
+					<h:outputText value="Product" />
+				</f:facet>
+
+				<rich:dropSupport id="product" acceptedTypes="Product"
+					dropValue="Product" dropListener="#{productImpl.processDrop}"
+					action="#{productImpl.navProductList}">
+				</rich:dropSupport>
+
+				<rich:dataGrid var="favoritesProduct"
+					value="#{productImpl.favoritesProductList}" columns="1"
+					columnClasses="dataGridBorder" rowClasses="dataGridBorder"
+					styleClass="dataGridBorder" width="100%">
+					<h:panelGrid columns="1" styleClass="rich-link-item" width="100%">
+						<h:commandLink value="#{favoritesProduct.productName}"
+							action="#{productImpl.cleanProduct}"
+							actionListener="#{productImpl.updateParam}">
+							<f:attribute name="paramType" value="1,2,3,4" />
+							<f:attribute name="productId"
+								value="#{favoritesProduct.productId}" />
+							<f:attribute name="categoryId"
+								value="#{favoritesProduct.categoryId}" />
+							<f:attribute name="supplierId" value="" />
+							<f:attribute name="brandId" value="" />
+						</h:commandLink>
+					</h:panelGrid>
+				</rich:dataGrid>
+			</rich:simpleTogglePanel>
+
+			<rich:simpleTogglePanel switchType="client" width="100%"
+				styleClass="tabPanel2Layout"
+				height="#{productImpl.favoritesSupplierHeight}">
+				<f:facet name="header">
+					<h:outputText value="Supplier" />
+				</f:facet>
+				<rich:dropSupport id="Supplier" acceptedTypes="Supplier"
+					dropListener="#{productImpl.processDrop}" dropValue="Supplier"
+					action="#{productImpl.navProductList}">
+				</rich:dropSupport>
+				<rich:dataGrid var="favoritesSupplier"
+					value="#{productImpl.favoritesSupplierList}" columns="1"
+					columnClasses="dataGridBorder" rowClasses="dataGridBorder"
+					styleClass="dataGridBorder" width="100%">
+					<h:panelGrid columns="1" styleClass="rich-link-item" width="100%">
+						<h:commandLink value="#{favoritesSupplier.supplierName}"
+							action="#{productImpl.cleanList}"
+							actionListener="#{productImpl.updateParam}">
+							<f:attribute name="paramType" value="1,2,3,4" />
+							<f:attribute name="supplierId"
+								value="#{favoritesSupplier.supplierId}" />
+							<f:attribute name="brandId" value="" />
+							<f:attribute name="productId" value="" />
+							<f:attribute name="categoryId" value="" />
+						</h:commandLink>
+					</h:panelGrid>
+				</rich:dataGrid>
+			</rich:simpleTogglePanel>
+			<h:commandButton value="Setting"
+				action="#{productImpl.favoritesMgtUI}" />
+		</h:panelGrid>
+	</rich:panel>
+
+</f:view>

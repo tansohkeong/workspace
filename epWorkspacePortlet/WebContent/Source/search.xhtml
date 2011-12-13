@@ -1,0 +1,37 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:panel styleClass="CataloguePanel">
+		<h:inputHidden value="#{productImpl.firstPage}" />
+		<h:panelGrid columns="9">
+			<h:outputLabel value="Search" />
+			<rich:spacer width="5" />
+			<rich:comboBox id="searchType"
+				suggestionValues="#{productImpl.searchTypeList}"
+				directInputSuggestions="false" required="true"
+				value="#{productImpl.searchTypeValue}"
+				defaultLabel="Select some value">
+				<a4j:support event="onselect" reRender="searchList"
+					action="#{productImpl.cleanSearchList}" ajaxSingle="true" />
+			</rich:comboBox>
+			<rich:spacer width="5" />
+			<h:outputLabel value="for" />
+			<rich:spacer width="5" />
+			<rich:comboBox id="searchList"
+				suggestionValues="#{productImpl.searchList}" width="300"
+				directInputSuggestions="false"
+				value="#{productImpl.searchListValue}"
+				defaultLabel="Select some value" />
+			<rich:spacer width="5" />
+			<h:commandButton id="searchAction" value="Search"
+				action="#{productImpl.SearchResult}" />
+		</h:panelGrid>
+	</rich:panel>
+</f:view>

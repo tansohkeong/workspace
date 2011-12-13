@@ -1,0 +1,51 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich">
+	<rich:spacer height="10" />
+	<h:panelGrid columns="2" width="100%" style="color:white;" columnClasses="colAlignTop,colAlignTop">
+		<h:panelGroup>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<rich:spacer width="10" />
+					<h:graphicImage value="/img/portal_rasmi_logo.png" />
+				</h:panelGroup>
+				<h:outputText value="Portal Rasmi Perolehan Kerajaan Malaysia"
+					styleClass="logoText" />
+			</h:panelGrid>
+		</h:panelGroup>
+		<h:panelGroup>
+			<h:panelGrid columns="1" style="float:right;">
+				<h:panelGrid columns="3" style="float:right;">
+					<s:link id="menuHomeId" view="/home.xhtml" value="Home"
+						propagation="none" styleClass="whiteColorText"/>
+					<s:link value="Help" propagation="none" styleClass="whiteColorText"/>
+				
+					<h:panelGrid columns="3" style="float:right;">
+						<s:link id="menuLoginId1" view="/login.xhtml" value="Login"
+							rendered="#{not identity.loggedIn}" propagation="none"
+					
+							styleClass="whiteColorText" />
+						<s:link id="menuLogoutId1" view="/login.xhtml"
+							action="#{identity.logout}" value="Logout"
+							rendered="#{identity.loggedIn}" propagation="none"
+							styleClass="whiteColorText" />
+					</h:panelGrid>
+				</h:panelGrid>
+				<h:panelGroup>
+					<h:panelGrid columns="1" style="float:right;">
+						<h:outputText id="menuWelcomeId1"
+							value="Signed In as: #{credentials.username}"
+							rendered="#{identity.loggedIn}" styleClass="whiteColorText" />
+
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:panelGroup>
+	</h:panelGrid>
+	<rich:spacer height="10" />
+</f:view>

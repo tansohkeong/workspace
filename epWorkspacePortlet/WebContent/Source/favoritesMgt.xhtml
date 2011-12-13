@@ -1,0 +1,86 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form id="shopForm">
+			<h:panelGrid columns="2" width="100%">
+				<h:outputLabel value="My Favorites"
+					styleClass="boldsubLabelgrayText20" />
+
+				<h:panelGroup styleClass="colFloatRight">
+					<h:panelGrid columns="1" styleClass="rich-link-item">
+						<h:commandLink value="#{messages['back.to.shops']}"
+							styleClass="boldsubLabelgrayText"
+							action="#{productImpl.navCategory}" />
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:panelGrid>
+
+			<rich:panel>
+				<ui:include src="/Source/favoritesMgtButton.xhtml" />
+				<h:panelGroup>
+					<rich:dataTable id="listcomponents" rowClasses="row1, row2"
+						cellpadding="0" cellspacing="0" width="100%" border="0"
+						var="expense" value="#{productImpl.favoritesMgtList}">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column width="70">
+									<h:selectBooleanCheckbox id="selectAll" title="selectAll"
+										value="#{productImpl.checkAll}"
+										valueChangeListener="#{productImpl.selectAllComponents}">
+										<a4j:support event="onclick" reRender="listcomponents" />
+									</h:selectBooleanCheckbox>
+									<h:outputLabel value="Select All" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Type" />
+								</rich:column>
+								<rich:column>
+									<h:outputText value="Product Name / Supplier Name" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
+						<rich:column>
+							<h:selectBooleanCheckbox value="#{expense.checked}"
+								immediate="true" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="#{expense.type}"></h:outputText>
+						</rich:column>
+						<rich:column styleClass="rich-link-item">
+							<h:commandLink action="#{productImpl.navProduct}"
+								value="#{expense.name}" rendered="#{expense.type == 'Product'}"
+								actionListener="#{productImpl.updateParam}">
+								<f:attribute name="paramType" value="1" />
+								<f:attribute name="productId" value="#{expense.code}" />
+							</h:commandLink>
+							<h:commandLink value="#{expense.name}"
+								action="#{productImpl.cleanList}"
+								rendered="#{expense.type == 'Supplier'}"
+								actionListener="#{productImpl.updateParam}">
+								<f:attribute name="paramType" value="1,2,3,4" />
+								<f:attribute name="supplierId" value="#{expense.code}" />
+								<f:attribute name="brandId" value="" />
+								<f:attribute name="productId" value="" />
+								<f:attribute name="categoryId" value="" />
+								<f:attribute name="productId" value="" />
+							</h:commandLink>
+						</rich:column>
+					</rich:dataTable>
+				</h:panelGroup>
+				<rich:spacer height="10" />
+				<ui:include src="/Source/favoritesMgtButton.xhtml" />
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

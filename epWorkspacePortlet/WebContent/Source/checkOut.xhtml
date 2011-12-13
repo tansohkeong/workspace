@@ -1,0 +1,92 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+		<rich:panel>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:graphicImage value="/img/vw-beetle-icon.png" />
+
+				</h:panelGroup>
+				<s:div styleClass="info">
+					<p>
+						<strong>Toyota</strong>
+					</p>
+					<h:panelGroup>
+						<h:panelGrid columns="2">
+							<h:outputText value="Price:" styleClass="label" />
+							<h:outputText value="RM100" />
+							<h:outputText value="Name:" styleClass="label" />
+							<h:outputText value="Vois" />
+							<h:outputText value="No:" styleClass="label" />
+							<h:outputText value="1234" />
+							<h:outputText value="Total Qty:" styleClass="label" />
+							<h:outputText value="1234" />
+							<s:button view="/GOF/GOF.xhtml"
+								propagation="none" value="REQ" />
+
+						</h:panelGrid>
+
+
+					</h:panelGroup>
+				</s:div>
+			</h:panelGrid>
+			<rich:tabPanel switchType="client" selectedTab="adds">
+				<rich:tab label="Delivery Address" name="adds">
+				</rich:tab>
+				<rich:tab label="RFI" name="RFI">
+				</rich:tab>
+			</rich:tabPanel>
+
+			<rich:panel>
+				<rich:scrollableDataTable frozenColCount="3" height="100px"
+					width="700px" id="carList611" rows="10" columnClasses="col"
+					value="" var="category" sortMode="single" sortOrder="" selection="">
+
+					<rich:column id="No">
+						<f:facet name="header">
+							<h:outputText styleClass="headerText" value="No" />
+						</f:facet>
+						<h:outputText value="1" />
+					</rich:column>
+					<rich:column id="ProductNo">
+						<f:facet name="header">
+							<h:outputText styleClass="headerText" value="Product No" />
+						</f:facet>
+						<h:outputText value="C1010" />
+					</rich:column>
+					<rich:column id="Supplier">
+						<f:facet name="header">
+							<h:outputText styleClass="headerText" value="Supplier" />
+						</f:facet>
+						<h:outputText value="N/A" />
+					</rich:column>
+					<rich:column id="ContractNo">
+						<f:facet name="header">
+							<h:outputText styleClass="headerText" value="Contract No" />
+						</f:facet>
+						<h:outputText value="N/A" />
+					</rich:column>
+					<rich:column width="200px">
+						<f:facet name="header">
+							<h:outputText styleClass="headerText" value="Amount" />
+						</f:facet>
+						<h:outputText value="Category Vin" />
+					</rich:column>
+
+					<rich:column width="200px">
+						<f:facet name="header">
+							<h:outputText styleClass="headerText" value="Action" />
+						</f:facet>
+						<h:commandButton image="/img/Search-icon.png"
+							action="/Source/product.xhtml" />
+					</rich:column>
+				</rich:scrollableDataTable>
+			</rich:panel>
+		</rich:panel>
+</ui:composition>

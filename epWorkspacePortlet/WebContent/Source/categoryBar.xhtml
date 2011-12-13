@@ -1,0 +1,95 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:simpleTogglePanel switchType="client" width="100%">
+		<f:facet name="header">
+			<h:outputText value="Price" />
+		</f:facet>
+		<h:panelGrid columns="2" width="100%">
+			<h:outputLabel value="From" />
+			<h:inputText id='fromValue' value="#{productImpl.fromValue}"
+				immediate="true">
+				<f:convertNumber type="number" pattern="#0.00" />
+			</h:inputText>
+			<h:outputLabel value="To" />
+			<h:inputText id='toValue' value="#{productImpl.toValue}"
+				immediate="true">
+				<f:convertNumber type="number" pattern="#0.00" />
+			</h:inputText>
+			<h:outputLabel value="" />
+			<h:panelGroup>
+				<h:commandButton value="Refine" action="#{productImpl.refine}" />
+				<h:commandButton value="Reset" action="#{productImpl.reset}" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</rich:simpleTogglePanel>
+	<rich:spacer height="5" />
+	<rich:simpleTogglePanel switchType="client" width="100%">
+		<f:facet name="header">
+			<h:outputText value="Brand" />
+		</f:facet>
+		<ui:repeat var="menu" value="#{productImpl.brandList}">
+			<h:panelGrid columns="2" styleClass="rich-link-item" width="100%">
+				<h:commandLink value="#{menu.brandName}"
+					actionListener="#{productImpl.updateParam}"
+					action="#{productImpl.cleanList}">
+					<f:attribute name="paramType" value="4" />
+					<f:attribute name="brandId" value="#{menu.brandId}" />
+				</h:commandLink>
+				<h:commandLink action="#{productImpl.cleanList}" value="(Clear)"
+					actionListener="#{productImpl.updateParam}"
+					rendered="#{productImpl.navigationBean.brandId != ''}"
+					style="color:red;">
+					<f:attribute name="paramType" value="4" />
+					<f:attribute name="brandId" value="" />
+				</h:commandLink>
+			</h:panelGrid>
+		</ui:repeat>
+	</rich:simpleTogglePanel>
+	<rich:spacer height="5" />
+	<rich:simpleTogglePanel switchType="client" width="100%">
+		<f:facet name="header">
+			<h:outputText value="Shop" />
+		</f:facet>
+		<rich:dataGrid var="menu2" value="#{productImpl.supplierList}"
+			columns="1" columnClasses="dataGridBorder"
+			rowClasses="dataGridBorder" styleClass="dataGridBorder" width="100%">
+
+			<a4j:outputPanel layout="block">
+				<rich:dragSupport dragIndicator=":indicator" dragType="Supplier"
+					dragValue="#{menu2.supplierId}">
+					<rich:dndParam name="label" value="#{menu2.supplierName}" />
+				</rich:dragSupport>
+				<rich:toolTip followMouse="true" direction="top-right"
+					showDelay="500" styleClass="tooltip">
+					<span style="white-space: nowrap">To add, drag and drop over
+						<strong>My Favorites</strong>.</span>
+				</rich:toolTip>
+				<h:panelGrid columns="2" styleClass="rich-link-item" width="100%">
+					<h:commandLink value="#{menu2.supplierName}"
+						actionListener="#{productImpl.updateParam}"
+						action="#{productImpl.cleanList}">
+						<f:attribute name="paramType" value="3" />
+						<f:attribute name="supplierId" value="#{menu2.supplierId}" />
+					</h:commandLink>
+					<h:commandLink action="#{productImpl.cleanList}" value="(Clear)"
+						actionListener="#{productImpl.updateParam}"
+						rendered="#{productImpl.navigationBean.supplierId != ''}"
+						style="color:red;">
+						<f:attribute name="paramType" value="3" />
+						<f:attribute name="supplierId" value="" />
+					</h:commandLink>
+				</h:panelGrid>
+			</a4j:outputPanel>
+		</rich:dataGrid>
+
+	</rich:simpleTogglePanel>
+
+
+</f:view>

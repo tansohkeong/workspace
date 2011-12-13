@@ -1,0 +1,61 @@
+/* top area */
+.AFBrandingBarLogo {background-image:url("../img/login/oracle_logo.png");background-position:center center;background-repeat:no-repeat;display:block;height:1.5em;width:119px;}
+body{background-image:url("../img/login/background_dark_blue_whitegradient_.png"); background-position:top left; background-color:#FCFCFC; background-repeat:repeat-x; margin-left:0; margin-top:0; margin-right: 0; margin-bottom:0;}
+.globe{position:absolute; left:1em; top:16em;}
+.tableBody{background-image:url("../img/login/background_white_mesh_whitegradient_.png"); background-position:left upper corner; background-repeat:no-repeat;}
+.logo{border-bottom:1px solid #FFFFFF; background-color:#FFFFFF;}
+.appname{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:18px;font-weight:normal;color: #093E7D;white-space:nowrap;padding-right:12px;width:300px;overflow:hidden;text-overflow:ellipsis;}
+.tab{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif; font-size:14px; color:#505050; font-weight:normal; white-space:nowrap;}
+.topbody{background-position:right; background-color: #FFFFFF; background-repeat:repeat-y; margin-left:0; margin-top:0; margin-right:0; margin-bottom:0;}
+.bottomborder{border-bottom:1px solid #FFFFFF;}
+.stylebold{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:11px;font-weight:bold;color:#505050;}
+.stylenormal{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:11px;font-weight:normal;color:#000000;}
+.style1{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:11px;font-weight:500;color:#505050;}
+.style2{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:11px;font-weight:500;color:#505050;padding-right:5px;padding-left:5px;}
+.pagelink{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif; font-size:11px; font-weight:normal; color:#00309C; white-space:nowrap;}
+.header{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:30px;color:#505050;font-weight:bold;white-space:nowrap;}
+.headertext{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size:14px;color:#505050;font-weight:200;white-space:nowrap;}
+.graphicbkgd{background-image:url("../img/login/graphicbkgd.png"); background-position:top left; background-repeat:repeat-x; margin-left:12px; margin-top:0; margin-right:12px; margin-bottom:0;}
+.graphicbkgdl{background-image:url("../img/login/graphicbkgdl.png"); background-position:top right; background-repeat:no-repeat; margin-left:12px; margin-top:0; margin-right:12px; margin-bottom:0;}
+.graphicbkgdr{background-image:url("../img/login/graphicbkgdr.png"); background-position:top left; background-repeat:no-repeat; margin-left:12px; margin-top:0; margin-right: 12px; margin-bottom: 0;}
+.pcdcolor {background-color:transparent}
+/* footer */
+.Copyright{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif; font-size:11px; font-weight:normal; color:#000000; white-space:nowrap; padding-left:12px;}
+.link{font-family:tahoma, verdana, geneva, arial, helvetica, sans-serif; font-size:11px; font-weight:normal; color:#C5FFFF; white-space:nowrap;}
+
+/* background ../img*/
+.loginbkgd{background-position:top left; background-repeat:no-repeat;}
+.searchbkgd{background-position:top left; background-repeat:no-repeat;}
+
+/* content area format */
+.dtext {font-weight: normal;font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size: 11px;color: #ffffff;}
+.mtext {font-weight: normal;font-family: tahoma, verdana, geneva, arial, helvetica, sans-serif;font-size: 11px;color: #000000;}
+.dlink {color: #a9dff5;font-style: inherit;}
+.mlink {color: #003399;font-style: inherit;}
+A:link {text-decoration: none}
+A:visited {text-decoration: none}
+A:active {text-decoration: none}
+A:hover {text-decoration: underline}
+
+/* padding settings */
+.line-height{line-height:1.25em;}
+.innertable {width:100%; border:0; spacing:3; padding:0;}
+.margin-top5 {margin-top: 5px;}
+.margin-top3 {margin-top: 3px;}
+.margin-bottom5 {margin-bottom: 5px;}
+.margin-bottom2 {margin-bottom: 2px;}
+.padding-left12{padding-left:12px;}
+.padding-right12{padding-right:12px;}
+.padding-right3{padding-right:3px;}
+.pcpadding {padding: 3px;}
+
+/* login and registration box */
+.lefttop {margin:0;padding:12px 0 12px 0;background:url("../img/login/leftmedium.png") top left no-repeat;}
+.leftmiddle {background-image: url("../img/login/leftmidmedium.png"); background-position: left; background-repeat: repeat-y;}
+.leftbottom {margin: 0; padding: 0 0 0 12px; background: url("../img/login/leftmedium.png") bottom left no-repeat;}
+.topmiddle { width:100%; background-image:url("../img/login/topmidmedium.png"); background-position:top; background-repeat:repeat-x;}
+.boxcontent {background: transparent; background-color: #FFFFFF; margin: 0;}
+.bottommiddle {background-image:url("../img/login/bottommidmedium.png"); background-position:bottom; background-repeat:repeat-x;}
+.righttop {margin: 0; padding: 12px 0 12px 0; background: url("../img/login/rightmedium.png") top right no-repeat;}
+.rightmiddle {background-image:url("../img/login/rightmidmedium.png"); background-position: right; background-repeat: repeat-y;}
+.rightbottom {display: block; padding: 0 12px 12px 0; background: url("../img/login/rightmedium.png") bottom right no-repeat;}

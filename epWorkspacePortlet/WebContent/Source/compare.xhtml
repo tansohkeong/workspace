@@ -1,0 +1,98 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form id="form">
+			<h:panelGrid columns="2" width="100%">
+
+				<h:panelGrid columns="3" style="padding:0px;text-align: center;">
+					<h:graphicImage value="/img/Actions-arrow-left-icon.png"
+						onclick="#{rich:component('aa')}.previous()" alt="arr_left"
+						height="20" width="20" />
+					<rich:datascroller for="compareDataList" id="aa" render="repeat"
+						stepControls="hide" boundaryControls="hide" fastControls="hide" />
+					<h:graphicImage value="/img/Actions-arrow-right-icon.png"
+						onclick="#{rich:component('aa')}.next()" alt="arr_right"
+						height="20" width="20" />
+				</h:panelGrid>
+
+				<h:panelGroup styleClass="colFloatRight">
+					<h:commandLink action="#{productImpl.navProductList}"
+						value="Back To Previous" styleClass="boldsubLabelgrayText" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<rich:separator height="2" lineType="solid" />
+
+			<h:panelGrid columns="2" styleClass="panel2">
+
+				<rich:panel styleClass="panel1">
+					<rich:spacer height="50" />
+					<rich:panel styleClass="compareTitlePanel">
+						<h:outputLabel value="Product Name"
+							styleClass="boldsubLabelText12" />
+					</rich:panel>
+					<ui:repeat var="spec" value="#{productImpl.compareTitleList}">
+						<rich:panel styleClass="compareTitlePanel">
+							<h:outputLabel value="#{spec.itemName}"
+								styleClass="boldsubLabelText12" />
+						</rich:panel>
+					</ui:repeat>
+
+				</rich:panel>
+
+				<rich:panel styleClass="panel2">
+
+					<rich:dataGrid id="compareDataList"
+						value="#{productImpl.compareList}" var="compare" columns="5"
+						elements="5" columnClasses="dataGridBorder"
+						rowClasses="dataGridBorder" styleClass="dataGridBorder">
+
+						<rich:panel styleClass="comparePanel" style="text-align: center;">
+							<h:panelGrid columns="2" width="100%">
+								<h:commandButton image="/img/trash-icon.png"
+									action="#{productImpl.removeCompareItem}"
+									actionListener="#{productImpl.updateParam}">
+									<f:attribute name="paramType" value="5" />
+									<f:attribute name="compareProductId"
+										value="#{compare.productId}" />
+								</h:commandButton>
+
+								<h:commandButton value="Add To Cart"
+									action="#{productImpl.addToCart}"
+									actionListener="#{productImpl.updateParam}">
+									<f:attribute name="paramType" value="1" />
+									<f:attribute name="productId"
+										value="#{compare.productId}" />
+								</h:commandButton>
+							</h:panelGrid>
+
+						</rich:panel>
+						<rich:panel>
+							<h:graphicImage value="/img/product/computer/#{compare.img}" />
+						</rich:panel>
+
+						<rich:panel styleClass="comparePanel2">
+							<h:outputLabel value="#{compare.productName}"
+								styleClass="boldsubLabelText12" />
+						</rich:panel>
+						<ui:repeat var="specDetail" value="#{compare.specList}">
+							<rich:panel styleClass="comparePanel2">
+								<h:outputLabel value="#{specDetail.name}"
+									styleClass="boldsubLabelText12" />
+							</rich:panel>
+						</ui:repeat>
+
+
+					</rich:dataGrid>
+				</rich:panel>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

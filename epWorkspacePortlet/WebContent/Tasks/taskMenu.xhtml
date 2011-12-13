@@ -1,0 +1,47 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<rich:panelMenu style="width:200px" mode="ajax"
+		iconExpandedGroup="disc" iconCollapsedGroup="disc"
+		iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
+		iconCollapsedTopGroup="chevronDown">
+
+		<rich:panelMenuGroup label="Tasks Views" expanded="true">
+			<rich:panelMenuItem label="Inbox" action="#{taskImpl.CleanList}">
+				<f:param name="taskType" value="" />
+				<f:param name="taskFilterType" value="STATUS" />
+				<f:param name="taskFilterValue" value="ASSIGNED" />
+			</rich:panelMenuItem>
+			<rich:panelMenuGroup label="View By" expanded="true"
+				iconExpanded="triangleUp" iconCollapsed="triangleDown">
+				<rich:panelMenuItem label="Due Soon">
+					<f:param name="taskFilterValue" value="Due Soon" />
+					<f:param name="taskFilterType" value="DATE" />
+				</rich:panelMenuItem>
+				<rich:panelMenuItem label="Over Due">
+					<f:param name="current" value="Over Due" />
+				</rich:panelMenuItem>
+				<rich:panelMenuItem label="High Priority">
+					<f:param name="current" value="High Priority" />
+				</rich:panelMenuItem>
+				<rich:panelMenuItem label="Past Week" action="#{taskImpl.CleanList}">
+					<f:param name="taskFilterSubValue" value="Past_Week" />
+					<f:param name="taskFilterType" value="DATE" />
+				</rich:panelMenuItem>
+				<rich:panelMenuItem label="Past Month"
+					action="#{taskImpl.CleanList}">
+					<f:param name="taskFilterSubValue" value="Past_Month" />
+					<f:param name="taskFilterType" value="DATE" />
+				</rich:panelMenuItem>
+			</rich:panelMenuGroup>
+		</rich:panelMenuGroup>
+	</rich:panelMenu>
+</f:view>
